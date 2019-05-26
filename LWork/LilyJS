@@ -1,0 +1,33 @@
+//Lily (JS)
+function readFiles(event) {
+  var fileList = event.target.files;
+  // fileList is a FileList object
+  // fileList contains a list of the selected files as File object
+  // with only 1 file
+  f = fileList[0];
+  // f is a File object
+  // to read f we need to use a FileReader. We will use readAsDataUrl function.
+  readOneFile(f);
+}
+
+function readOneFile(oneFile) {
+  reader = new FileReader();  //reader is a fileReader object
+  // onload event handler function
+  reader.onload = function(loadedEvent) {
+    var image = document.createElement("span");
+    // add an image to span, src = data URL
+    image.innerHTML = "<img class='thumb' src=" + loadedEvent.target.result + " alt='a picture' >";
+    // insert the image in the div "pictures"
+    console.log("file: " + oneFile.name + " " + oneFile.size, " bytes");
+    clearDiv("pictures");
+    document.getElementById("pictures").insertBefore(image, null);
+  }
+  reader.readAsDataURL(oneFile);  // starts loading the file
+}
+
+function clearDiv(idDiv) {
+ var div = document.getElementById(idDiv);
+ while (div.firstChild) {
+   div.removeChild(div.firstChild);
+ }
+}
