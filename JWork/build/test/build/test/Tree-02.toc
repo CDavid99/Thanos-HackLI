@@ -1,0 +1,5 @@
+('/Users/Ragnarok/anaconda3/lib/python3.7/site-packages/dlib-19.17.99-py3.7-macosx-10.7-x86_64.egg',
+ None,
+ {'*.cpython-37m-darwin.so', '*.pyc', '*.py', 'EGG-INFO', '*.abi3.so', '*.so'},
+ 'DATA',
+ [])

@@ -3,8 +3,8 @@
 block_cipher = None
 
 
-a = Analysis(['test.py'],
-             pathex=['/Users/Ragnarok/Documents/GitHub/Thanos-HackLI/JWork'],
+a = Analysis(['test'],
+             pathex=['/Users/Ragnarok/Documents/GitHub/Thanos-HackLI/JWork/build/test'],
              binaries=[],
              datas=[],
              hiddenimports=[],
