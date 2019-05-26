@@ -1,4 +1,4 @@
-Lily (JS)
+//Lily (JS)
 function readFiles(event) {
   var fileList = event.target.files;
   // fileList is a FileList object
