@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<head>
+  <script src="libraries/JSZip.js" type="text/javascript"></script>
+  <script src="libraries/FileSaver.js" type="text/javascript"></script>
+ <script>
+   function readFiles(event) {
+    var fileList = event.target.files;
+    // fileList is a FileList object
+    // fileList contains a list of the selected files as File object
+    // with only 1 file
+    f = fileList[0];
+    // f is a File object
+    // to read f we need to use a FileReader. We will use readAsDataUrl function. 
+    readOneFile(f);
+  }
+
+  function readOneFile(oneFile) {
+    reader = new FileReader();  //reader is a fileReader object
+    // onload event handler function
+    reader.onload = function(loadedEvent) {
+      var image = document.createElement("span");
+      // add an image to span, src = data URL
+      image.innerHTML = "<img class='thumb' src=" + loadedEvent.target.result + " alt='a picture' >";
+      // insert the image in the div "pictures"
+      console.log("file: " + oneFile.name + " " + oneFile.size, " bytes");
+      clearDiv("pictures");
+      document.getElementById("pictures").insertBefore(image, null);
+    }
+    reader.readAsDataURL(oneFile);  // starts loading the file
+  }
+
+  function clearDiv(idDiv) {
+   var div = document.getElementById(idDiv);
+   while (div.firstChild) {
+     div.removeChild(div.firstChild);
+   }
+ }
+$(window).load(function () {
+    $(".trigger_popup_fricc").click(function(){
+       $('.hover_bkgr_fricc').show();
+    });
+    $('.hover_bkgr_fricc').click(function(){
+        $('.hover_bkgr_fricc').hide();
+    });
+    $('.popupCloseButton').click(function(){
+        $('.hover_bkgr_fricc').hide();
+    });
+});
+
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body{
+  font: arial;
+  margin:0;
+  color: #ce8b1e;
+}
+
+.sidenav {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color:#2f1351;
+  overflow-x: hidden;
+  padding-top: 20px;
+  font: arial;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 0px;
+}
+input:valid {
+  background-color: transparent;
+}
+
+#filesInput {
+  width: 1000px;
+  padding: 0px;
+  margins:0;
+}
+body, html {
+  height: 100%;
+}
+
+.parallax {
+  /* The image used */
+  background-image: url('https://i.ytimg.com/vi/FOabQZHT4qY/maxresdefault.jpg');
+
+  /* Full height */
+  height: 1000px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
+}
+.parallax2{
+  height:700px;
+  width:1450px;
+  background-color:#462563;
+  font-size:36px;
+  padding-left: 200px;
+  padding-top:
+}
+  .parallax3 {
+  /* The image used */
+
+
+  /* Full height */
+  height: 1000px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+    }
+  .btn {
+  background-color: #ce6408;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+    .thanos{
+      position: right;
+    }
+    .hover_bkgr_fricc{
+    background:rgba(0,0,0,.4);
+    cursor:pointer;
+    display:none;
+    height:100%;
+    position:fixed;
+    text-align:center;
+    top:0;
+    width:100%;
+    z-index:10000;
+}
+.hover_bkgr_fricc .helper{
+    display:inline-block;
+    height:100%;
+    vertical-align:middle;
+}
+.hover_bkgr_fricc > div {
+    background-color: #fff;
+    box-shadow: 10px 10px 60px #555;
+    display: inline-block;
+    height: auto;
+    max-width: 551px;
+    min-height: 100px;
+    vertical-align: middle;
+    width: 60%;
+    position: relative;
+    border-radius: 8px;
+    padding: 15px 5%;
+}
+.popupCloseButton {
+    background-color: #fff;
+    border: 3px solid #999;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-block;
+    font-family: arial;
+    font-weight: bold;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 25px;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+.popupCloseButton:hover {
+    background-color: #ccc;
+}
+.trigger_popup_fricc {
+    cursor: pointer;
+    font-size: 20px;
+    margin: 20px;
+    display: inline-block;
+    font-weight: bold;
+}
+  </style>
+</head>
+<body>
+<div class="sidenav">
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#clients">Clients</a>
+  <a href="#contact">Contact</a>
+</div>
+  <div class="main">
+
+    <div class="parallax"></div>
+     <div class="parallax2">
+  <h1>Join the Avengers! </h1>
+    <h3> Upload a photo now to meet the avengers!</h3>
+          <p><label for="filesInput">Please upload your photo</label></p>
+      <p><input id="filesInput" type="file" onchange="readFiles(event);"></p>
+      <div id="pictures"></div>
+  <select>
+  <option value="volvo">Captain America</option>
+  <option value="saab">Hulk</option>
+  <option value="opel">Iron Man</option>
+  <option value="audi">Black Widow</option>
+</select>
+    <nav>
+      <a href="https://github.com/CDavid99/Thanos-HackLI/blob/master/dist/JWork/thanosSnap.exe?raw=true"><button class="btn"><i class="fa fa-download"></i> Download</button><a class="trigger_popup_fricc">Click here to show the popup</a>
+
+<div class="hover_bkgr_fricc">
+    <span class="helper"></span>
+    <div>
+        <div class="popupCloseButton">X</div>
+        <p>Add any HTML content<br />inside the popup box!</p>
+    </div>
+</div></a>
+    </nav>
+  </div>
+  <div class="parallax3">
+  <iframe width="100%" height="100%" src="https://www.youtube.com/embed/aUn04xVUfHg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+
+</body>
+</html>
