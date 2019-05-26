@@ -7,6 +7,8 @@ from .storage import AppEngineBlobStoage
 import zipfile
 from django.http import HttpResponse
 
+import mimetypes
+
 class AppEngineBlobStoage(Storage):
     def exists(self, name):
     def size(self, name):
@@ -24,49 +26,6 @@ class Photo(models.Model):
         )
     serving_url = models.URLField()
 
-class downloadZip(models.Model):    #creates pathway for zip download
-    zipSource = FileField(upload_to="Server/Name")
-
-    funtion create_my_zip(request, [zipSource]): #maybe not request
-        file_like = StringIO.StringIO()
-        #create zip here
-        ZF = zipfile.ZipFile(file_like, mode='w')
-        ZF.close()
-        file_like.seek(0)
-        inMemory = InMemoryUploadedFile(file_like, None, "my_zip%s" % filename, 'application/zip', file_like.len, None)
-        zipSource = ZipStored(zipSource=inMemory)
-        zipSource.save()
-        #create a url to match the zip's ID
-    url(r'^get_my_zip/(d+)$', "zippyApp.views.get_zip")
-    #view will rturn file matching the id passed by the URL
-    function get_zip(request, id):
-        myZip = ZipStored.object.get(pk = id)
-        filename = myZip.zipSource.name.split('/')[-1]
-        response = HttpResponse(myZip.file, content_type='application/zip')
-        response['Content-Disposition'] = 'attachment; filename=%s' %filename
-        #application/zip is a filler for someting, as is % and Server/Name
-
-class Pass(models.Model):    #processes passed image by catching from Lily's HtmL
-    var thanosImage = Photo() #catch photopass here
-    Aperture.upload(something1, something2, thanosImage, something3)
-    Aperture.get_serving_url(something1, something2, )
-
-class zipper(models.Model):   #takes two .txt compressed files and zips them into one
-    def getfiles(request): #request might be a stand in for local/path
-        filenames = ["B64Image.txt", "ThanOX.txt"]
-        zip_subdir = "somefiles"
-        zip_filename = "%s.zip" % zip_subdir
-        # % is a placeholder again, so above would be "ssomefiles.zip"?
-
-        s = StringIO.StringIO()
-        zf = zipfile.ZipFile(s, "w")
-
-        for fpath in filenames: #needs additional code to differentiate between each file
-            fdir, fname = os.path.split(fpath)
-            zip_path = os.path.join(zip_subdir, fname)
-            zf.write(fpath, zip_path)
-        zf.close()
-        resp = HttpResponse(s.getvalue(), mimetype="application/x-zip-compressed")
-        reso['Content-Disposition'] = 'attachment; filename=%s' %zip_filename
-
-        return resp
+class passData(models.Model):
+    x = Photo()
+    key = Aperture.upload(self, meta, x, mime_type=".jpeg")

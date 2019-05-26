@@ -1,3 +1,5 @@
+#Process image into compressed datastate without saving it to the server
+
 from _future_ import with_statement
 import webapp2
 from base64 import b64decode
@@ -20,6 +22,7 @@ class Aperture(object):
         key = files.blobstore.get_blob_key(file_name)
         return str(key)
         )
+
 
     def serving_url(self, meta, key):
         return images.get_serving_url(blobstore.BlobKey(key))
