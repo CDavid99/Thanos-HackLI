@@ -4,7 +4,8 @@
 
 @NYIT
 
-Devpost for the project can be found here //Input Link here
+Devpost for the project can be found here
+https://devpost.com/software/sampleproject-sa792p
 
 SetUp Instructions for the Project:
 //Instructions Here

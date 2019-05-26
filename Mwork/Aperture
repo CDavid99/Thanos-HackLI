@@ -1,0 +1,25 @@
+from _future_ import with_statement
+import webapp2
+from base64 import b64decode
+from StringIO import StringIO
+from xmlrpcserver import XmlRpcServer
+#import these bitches in the backend
+from google.appengine.api import files
+from google.appengine.api import images
+from google.appengine.ext import blobstore
+from google.appengine.ext.webapp import blobstore_handlers
+
+class Aperture(object):
+
+    def upload(self, meta, photo, mime_type):
+        data = b64decode(photo)
+        file_name = files.blobstore.create(mime_type=mime_type)
+        with files.open(file_name, 'a') as f:
+            f.write(data)
+        files.finalize(file_name)
+        key = files.blobstore.get_blob_key(file_name)
+        return str(key)
+        )
+
+    def serving_url(self, meta, key):
+        return images.get_serving_url(blobstore.BlobKey(key))

@@ -1,0 +1,21 @@
+from django.core.files.storage import Storage
+from django.db import models
+from django.db.models.fields.files import ImageField
+from .storage import AppEngineBlobStoage
+
+class AppEngineBlobStoage(Storage):
+    def exists(self, name):
+    def size(self, name):
+    def url(self, name):
+    def delete(self, name):
+    def listdir(self, path):
+        raise NotImplementedError()
+
+class Photo(models.Model):
+    blob = ImageField(
+        upload_to='BlobStorage',
+        storage=AppEngineBlobStoage(),
+        max_length=255,
+        blank=False,
+        )
+    serving_url = models.URLField()

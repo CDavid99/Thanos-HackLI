@@ -50,8 +50,8 @@ for face_location in face_locations:
 
 finalImg.save('edit.png')
 
-import ctypes
+#import ctypes
 
-ctypes.windll.user32.SystemParametersInfoA(20, 0, finalImg, 0)
+#ctypes.windll.user32.SystemParametersInfoA(20, 0, finalImg, 0)
 
 #removeHalfFiles(osPath)
