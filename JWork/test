@@ -1,13 +1,30 @@
 import face_recognition as facedetector
-from PIL import Image
+from PIL import Image, ImageOps
+
+scaleConst = 1.05
 
 try:
-    image = facedetector.load_image_file("image.jpg")
-except:
     image = facedetector.load_image_file("image.png")
+    origimage = Image.open("image.png")
+except:
+    image = facedetector.load_image_file("image.jpg")
+    origimage = Image.open("image.jpg")
 
 face_locations = facedetector.face_locations(image)
 
+lenorig, widorig = origimage.size
+
+finalImg = Image.new('RGBA', (lenorig, widorig), (255, 255, 255, 255))
+finalImg.paste(origimage, (0,0))
+
 for face_location in face_locations:
     top, left, bottom, right = face_location
-    print("The coordinates for the face is Top {} Left {} Bottom {} Right {}".format(top, left, bottom, right))
+    #print("The coordinates for the face is Top {} Left {} Bottom {} Right {}".format(top, left, bottom, right))
+    height = top - bottom
+    width = right - left
+    size = (int(abs(width)*scaleConst), int(abs(height)*scaleConst))
+    thanoshead = ImageOps.fit(Image.open("thanosface.png"), size, Image.ANTIALIAS)
+    headpos = (right, top)
+    finalImg.paste(thanoshead, headpos, mask=thanoshead)
+
+finalImg.save('edit.png')
