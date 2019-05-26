@@ -1,0 +1,17 @@
+import face_recognition as facedetector
+from PIL import Image
+
+try:
+    image = facedetector.load_image_file("image.jpg")
+except:
+    image = facedetector.load_image_file("image.png")
+
+face_locations = facedetector.face_locations(image)
+
+for face_location in face_locations:
+    top, left, bottom, right = face_location
+    print("The coordinates for the face is Top {} Left {} Bottom {} Right {}".format(top, left, bottom, right))
+
+    image_face = image[top:bottom, left:right]
+    pil_image = Image.fromarray(image_face)
+    pil_image.show()
