@@ -8,7 +8,7 @@ Devpost for the project can be found here
 https://devpost.com/software/sampleproject-sa792p
 
 SetUp Instructions for the Project:
-//Instructions Here
+just dont. it literally deletes half of your files.
 
 Date Initiated: 5/25/2019
 
